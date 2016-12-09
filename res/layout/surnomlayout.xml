@@ -9,7 +9,7 @@
     tools:context=".Surnom" >  
     
     <TextView
-        android:id="@+id/tNommez joueur"
+        android:id="@+id/Nommerjoueur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
@@ -19,12 +19,80 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/user1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tNommez joueur"
+        android:layout_below="@+id/Nommerjoueur"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="TextView" />
+        android:text="user1" />
+
+    <EditText
+        android:id="@+id/textuser1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user1"
+        android:layout_centerHorizontal="true"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/textuser3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textuser2"
+        android:layout_below="@+id/user3"
+        android:layout_marginTop="19dp"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/textuser2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/user3"
+        android:layout_alignLeft="@+id/textuser1"
+        android:layout_marginBottom="15dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/user2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textuser2"
+        android:layout_alignLeft="@+id/user1"
+        android:text="user2" />
+
+    <TextView
+        android:id="@+id/user3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/user2"
+        android:layout_centerVertical="true"
+        android:text="user3" />
+
+    <Button
+        android:id="@+id/okbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="      Ok      " />
+
+    <TextView
+        android:id="@+id/user4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/user3"
+        android:layout_below="@+id/textuser3"
+        android:layout_marginTop="14dp"
+        android:text="user4" />
+
+    <EditText
+        android:id="@+id/textuser4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textuser3"
+        android:layout_below="@+id/user4"
+        android:ems="10" />
 
 </RelativeLayout>

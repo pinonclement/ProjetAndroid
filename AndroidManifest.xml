@@ -21,6 +21,7 @@
             
             </activity>
         <activity android:name="Surnom"></activity>
+        <activity android:name="JeuActivity"></activity>
     </application>
 
 </manifest>

@@ -1,8 +1,6 @@
 package com.project.projetandroid;
 
 
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +36,7 @@ public class Accueil extends Activity implements OnClickListener {
 			break;
 	
 		
-	}
+	} 
 
 }
 }
