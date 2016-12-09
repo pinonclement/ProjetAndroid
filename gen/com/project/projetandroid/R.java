@@ -17,9 +17,10 @@ public final class R {
         public static final int RelativeLayout1=0x7f060003;
         public static final int highscorebutton=0x7f060002;
         public static final int newgamebutton=0x7f060001;
-        public static final int spinnernbjoueur=0x7f060005;
-        public static final int textView1=0x7f060004;
+        public static final int tNommez joueur=0x7f060004;
+        public static final int textView1=0x7f060005;
         public static final int textView2=0x7f060000;
+        public static final int textView3=0x7f060006;
     }
     public static final class layout {
         public static final int accueillayout=0x7f030000;
