@@ -84,7 +84,7 @@ public class JeuActivity extends Activity {
             case DIALOG_ALERT:
                 // Create out AlterDialog
                 Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(((Joueur) al.get(0)).getPseudo()+" Ã  ton tour !");
+                builder.setMessage(((Joueur) al.get(0)).getPseudo()+"à ton tour !");
                 builder.setCancelable(true);
                 builder.setPositiveButton("Ok", new OkOnClickListener());
                // builder.setNegativeButton("OK", new CancelOnClickListener());
