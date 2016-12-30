@@ -1,4 +1,5 @@
-package com.project.projetandroid;
+/*
+
 
 import java.util.ArrayList;
 
@@ -51,6 +52,8 @@ public abstract class Des {
 				else if (nombreAleatoire > 1 && nombreAleatoire <= 3)
 					listfaces.add("casserole");
 				else
+					joueur
+					
 					listfaces.add("fourchette");
 
 			}
