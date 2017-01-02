@@ -93,7 +93,7 @@ public class Joueur {
 	}
 	
 	protected void perdre(){
-		if(fourchette==3)
+		if(fourchette>=3)
 			score_tempo=0;
 	}
 	
