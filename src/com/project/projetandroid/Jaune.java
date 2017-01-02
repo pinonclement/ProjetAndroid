@@ -3,7 +3,15 @@ package com.project.projetandroid;
 class Jaune extends Des {
 	private String couleur="Jaune";
 	private String[] faces={"Pate","Pate","Casserole","Casserole","Fourchette","Fourchette"};
-	private String faceDécouverte="";
+	private String faceRetournee="";
+
+	protected String getFaceRetournee() {
+		return faceRetournee;
+	}
+
+	protected void setFaceRetournee(String faceRetournee) {
+		this.faceRetournee = faceRetournee;
+	}
 
 	protected String getCouleur() {
 		return couleur;
@@ -21,15 +29,14 @@ class Jaune extends Des {
 		this.faces = faces;
 	}
 
-	protected String getFaceDécouverte() {
-		return faceDécouverte;
-	}
-
-	protected void setFaceDécouverte(String faceDécouverte) {
-		this.faceDécouverte = faceDécouverte;
-	}
 
 	private Jaune(String couleur, String[] faces) {
+	}
+
+	@Override
+	protected void faceTire() {
+		int faceChoisie=((int)Math.random()*faces.length);
+		this.faceRetournee=faces[faceChoisie];	
 	}
 
 }

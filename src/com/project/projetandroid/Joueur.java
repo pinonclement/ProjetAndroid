@@ -1,16 +1,30 @@
 package com.project.projetandroid;
 
-import java.util.ArrayList;
 
 public class Joueur {
 
 	private String pseudo;
 	private int score_final;
-	private int pate;
-	private int casserole; // Inutile ?
+	private int score_tempo;
 	private int fourchette;
-	private ArrayList<Des> main;
+	private Des[] main=new Des[3];
 
+	protected int getScore_tempo() {
+		return score_tempo;
+	}
+	
+	protected int getFourchette() {
+		return fourchette;
+	}
+
+	protected void setFourchette(int fourchette) {
+		this.fourchette = fourchette;
+	}
+
+	protected void setScore_tempo(int score_tempo) {
+		this.score_tempo = score_tempo;
+	}
+	
 	public String getPseudo() {
 		return pseudo;
 	}
@@ -27,91 +41,63 @@ public class Joueur {
 		this.score_final = score_final;
 	}
 
-	public int getPate() {
-		return pate;
-	}
-
-	public void setPate(int pate) {
-		this.pate = pate;
-	}
-
-	public int getCasserole() {
-		return casserole;
-	}
-
-	public void setCasserole(int casserole) {
-		this.casserole = casserole;
-	}
-
-	public int getFourchette() {
-		return fourchette;
-	}
-
-	public void setFourchette(int fourchette) {
-		this.fourchette = fourchette;
-	}
 
 	public Joueur(String pseudo) {
 		this.pseudo = pseudo;
 		score_final = 0;
-		pate = 0;
-		casserole = 0;
-		fourchette = 0;
+		fourchette=0;
+		score_tempo=0;
+		
 	}
-
-	// on pioche X dés
-	public ArrayList pioche(int nombre) {
-		ArrayList pioche = null;
-		for (int i = 0; i <= nombre; i++) {
-			int nombreAleatoire = 1 + (int) (Math.random() * ((13 - 1) + 1));
-			if (nombreAleatoire <= 6)
-				pioche.add("vert");
-			else if (nombreAleatoire > 6 && nombreAleatoire <= 10)
-				pioche.add("jaune");
-			else
-				pioche.add("rouge");
-		}
-
-		return pioche;
+	public Des[] getMain() {
+		return main;
 	}
-
-	// on lance les dés
-
-	public void ParcoursDes(ArrayList faces) {
-		for (Object elt : faces) {
-			int nombreAleatoire = 1 + (int) (Math.random() * ((13 - 1) + 1));
-			if (elt.toString() == "vert") {
-				if (nombreAleatoire <= 3)
-					this.pate = this.pate + 1;
-				else if (nombreAleatoire > 3 && nombreAleatoire <= 5)
-					this.casserole = this.casserole + 1;
-				else
-					this.fourchette = this.fourchette + 1;
-			}
-			if (elt.toString() == "jaune") {
-				if (nombreAleatoire <= 2)
-					this.pate = this.pate + 1;
-				else if (nombreAleatoire > 2 && nombreAleatoire <= 4)
-					this.casserole = this.casserole + 1;
-				else
-					this.fourchette = this.fourchette + 1;
-			}
-			if (elt.toString() == "rouge") {
-				if (nombreAleatoire <= 1)
-					this.pate = this.pate + 1;
-				else if (nombreAleatoire > 1 && nombreAleatoire <= 3)
-					this.casserole = this.casserole + 1;
-				else
-					this.fourchette = this.fourchette + 1;
-			}
-
-		}
-
+	public void setMain(Des[] main) {
+		this.main = main;
 	}
 	
-	public void EtudeFace() {
-		while(this.casserole < 3 | this.score_final< 13){
-			
+	protected void analyseTempo(){
+		for(int i=0;i<3;i++)
+		{
+			if(main[i]!=null){
+				
+				if(main[i].getFaceRetournee().equals("Pate")&&this.getFourchette()!=3)
+				{
+					score_tempo++;
+					main[i]=null;
+				}
+			if(main[i].getFaceRetournee().equals("Fourchette"))
+				{
+					fourchette++;
+					main[i]=null;
+				}
+			}
+				
 		}
 	}
+	
+	protected boolean aCasserole(){
+		if(fourchette!=3){
+			for(int i=0;i<3;i++){
+				if(main[i].getFaceRetournee().equals("Casserole"))
+					return true;
+			}
+		}
+		return false;
+	}
+	
+	protected boolean gagne(){
+		if(score_final==13)
+			return true;
+		return false;
+	}
+	
+	protected void perdre(){
+		if(fourchette==3)
+			score_tempo=0;
+	}
+	
+
+
+
 }
