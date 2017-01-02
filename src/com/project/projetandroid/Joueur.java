@@ -9,7 +9,7 @@ public class Joueur {
 	private int pate;
 	private int casserole; // Inutile ?
 	private int fourchette;
-	private int nombredes;
+	private ArrayList<Des> main;
 
 	public String getPseudo() {
 		return pseudo;

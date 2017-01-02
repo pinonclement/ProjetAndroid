@@ -1,13 +1,51 @@
-/*
 
-
-import java.util.ArrayList;
+package com.project.projetandroid;
+//import java.util.ArrayList;
 
 public abstract class Des {
 
 	private String couleur;
+	private String[] faces;
+	private String faceDÈcouverte="";
+	
+	protected abstract Des creation();
+	
 
-	// on pioche X d√©s
+
+	public String[] getFaces() {
+		return faces;
+	}
+
+	public void setFaces(String[] faces) {
+		this.faces = faces;
+	}
+
+	public String getFaceDÈcouverte() {
+		return faceDÈcouverte;
+	}
+
+	public void setFaceDÈcouverte(String faceDÈcouverte) {
+		this.faceDÈcouverte = faceDÈcouverte;
+	}
+
+	public Des(String couleur,String[] faces){
+		this.setCouleur(couleur);
+		this.faces=faces;
+	}
+
+
+
+	public String getCouleur() {
+		return couleur;
+	}
+
+
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+	
+	/*on pioche X d√©s
 	public ArrayList pioche(int nombre) {
 		ArrayList pioche = null;
 		for (int i = 0; i <= nombre; i++) {
@@ -21,10 +59,10 @@ public abstract class Des {
 		}
 
 		return pioche;
-	}
+	} */
 
 	// on lance les d√©s
-
+/*
 	public ArrayList ParcoursDes(ArrayList faces) {
 		ArrayList listfaces = null;
 		for (Object elt : faces) {
@@ -52,13 +90,11 @@ public abstract class Des {
 				else if (nombreAleatoire > 1 && nombreAleatoire <= 3)
 					listfaces.add("casserole");
 				else
-					joueur
-					
 					listfaces.add("fourchette");
 
 			}
 		}
 
 			return listfaces;
-	}
+	}*/
 }
