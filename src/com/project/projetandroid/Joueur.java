@@ -87,7 +87,7 @@ public class Joueur {
 	}
 	
 	protected boolean gagne(){
-		if(score_final==13)
+		if(score_final>=13)
 			return true;
 		return false;
 	}
