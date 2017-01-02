@@ -6,7 +6,7 @@ package com.project.projetandroid;
 	private String faceRetournee="";
 	
 	
-	public Vert() {
+	protected Vert() {
 	}
 
 

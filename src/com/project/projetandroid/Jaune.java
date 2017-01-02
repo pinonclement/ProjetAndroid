@@ -30,7 +30,7 @@ class Jaune extends Des {
 	}
 
 
-	private Jaune(String couleur, String[] faces) {
+	protected Jaune() {
 	}
 
 	@Override

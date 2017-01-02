@@ -17,7 +17,7 @@ public class JeuActivity extends Activity {
 	//String user2 = getIntent().getStringExtra("user2");
 	//String user3 = getIntent().getStringExtra("user3");
 	//String user4 = getIntent().getStringExtra("user4");
-	ArrayList al = new ArrayList();
+	ArrayList<Joueur> al = new ArrayList<Joueur>();
     private static final int DIALOG_ALERT = 10;
 
 	public void onCreate(Bundle bn) {
@@ -34,7 +34,7 @@ public class JeuActivity extends Activity {
 		showDialog(DIALOG_ALERT);
 	}
 
-	public ArrayList DefinirJoueur(String a, String b, String c, String d, ArrayList al) {
+	public ArrayList<Joueur> DefinirJoueur(String a, String b, String c, String d, ArrayList <Joueur> al) {
 
 		if (c.length()==0 && d.length()==0) {
 			Joueur joueur1 = new Joueur(a);

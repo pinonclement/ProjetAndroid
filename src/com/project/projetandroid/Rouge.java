@@ -6,7 +6,7 @@ class Rouge extends Des {
 	private String faceRetournee="";
 	
 	
-	private Rouge() {
+	protected Rouge() {
 	}
 
 
