@@ -4,47 +4,6 @@ package com.project.projetandroid;
 
 public abstract class Des {
 
-	private String couleur;
-	private String[] faces;
-	private String faceDÈcouverte="";
-	
-	protected abstract Des creation();
-	
-
-
-	public String[] getFaces() {
-		return faces;
-	}
-
-	public void setFaces(String[] faces) {
-		this.faces = faces;
-	}
-
-	public String getFaceDÈcouverte() {
-		return faceDÈcouverte;
-	}
-
-	public void setFaceDÈcouverte(String faceDÈcouverte) {
-		this.faceDÈcouverte = faceDÈcouverte;
-	}
-
-	public Des(String couleur,String[] faces){
-		this.setCouleur(couleur);
-		this.faces=faces;
-	}
-
-
-
-	public String getCouleur() {
-		return couleur;
-	}
-
-
-
-	public void setCouleur(String couleur) {
-		this.couleur = couleur;
-	}
-	
 	/*on pioche X d√©s
 	public ArrayList pioche(int nombre) {
 		ArrayList pioche = null;

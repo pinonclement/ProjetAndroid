@@ -1,21 +1,35 @@
 package com.project.projetandroid;
 
-public class Jaune extends Des {
+class Jaune extends Des {
 	private String couleur="Jaune";
 	private String[] faces={"Pate","Pate","Casserole","Casserole","Fourchette","Fourchette"};
-	
-	
-	
-	public Jaune(String couleur, String[] faces) {
-		super(couleur, faces);
-		// TODO Auto-generated constructor stub
+	private String faceDécouverte="";
+
+	protected String getCouleur() {
+		return couleur;
 	}
 
-	@Override
-	protected Des creation() {
-		
-		return new Jaune(couleur,faces);
-		}
-	
+	protected void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+
+	protected String[] getFaces() {
+		return faces;
+	}
+
+	protected void setFaces(String[] faces) {
+		this.faces = faces;
+	}
+
+	protected String getFaceDécouverte() {
+		return faceDécouverte;
+	}
+
+	protected void setFaceDécouverte(String faceDécouverte) {
+		this.faceDécouverte = faceDécouverte;
+	}
+
+	private Jaune(String couleur, String[] faces) {
+	}
 
 }
