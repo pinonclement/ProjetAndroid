@@ -20,7 +20,7 @@ class ReserveDes {
 	
 	
 	protected void pioche(Joueur a){
-		int max=reserve.size();
+		int max=13;
 		int i=0; int choix;
 		Des[] main=new Des[3];
 		while(i<=2){
@@ -59,6 +59,7 @@ class ReserveDes {
 			choix=((int) Math.random()*reserve.size());
 			(reserve.get(choix)).faceTire();
 			main[positionNull(main)]=reserve.get(choix);
+			reserve.remove(reserve.get(choix));
 			tirage--;
 		}
 		
