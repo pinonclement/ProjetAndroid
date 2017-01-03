@@ -39,14 +39,10 @@ public class JeuActivity extends Activity implements OnClickListener  {
 	public ArrayList<Joueur> DefinirJoueur(String a, String b, String c, String d, ArrayList <Joueur> al) {
 		al.add(new Joueur (a));
         al.add(new Joueur(b));
-			if (d.length()==0 ){
+			if (c.length()!=0 )
 				al.add(new Joueur(c));
-			}
-            else{
-
+            if(d.length()!=0)
                 al.add(new Joueur(d));
-
-            }
 			
 		return al;
 	}
