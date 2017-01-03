@@ -7,12 +7,20 @@ public class Joueur {
 	private int score_final;
 	private int score_tempo;
 	private int fourchette;
+	private boolean jouer;
 	private Des[] main=new Des[3];
 
 	protected int getScore_tempo() {
 		return score_tempo;
 	}
 	
+	
+	protected boolean isJouer() {
+		return jouer;
+	}
+	protected void setJouer(boolean jouer) {
+		this.jouer = jouer;
+	}
 	protected int getFourchette() {
 		return fourchette;
 	}
@@ -66,7 +74,7 @@ public class Joueur {
 					score_tempo++;
 					main[i]=null;
 				}
-			if(main[i].getFaceRetournee().equals("Fourchette"))
+				else if(main[i].getFaceRetournee().equals("Fourchette"))
 				{
 					fourchette++;
 					main[i]=null;
@@ -79,8 +87,9 @@ public class Joueur {
 	protected boolean aCasserole(){
 		if(fourchette!=3){
 			for(int i=0;i<3;i++){
-				if(main[i].getFaceRetournee().equals("Casserole"))
-					return true;
+				if(main[i]!=null)
+					if(main[i].getFaceRetournee().equals("Casserole"))
+						return true;
 			}
 		}
 		return false;

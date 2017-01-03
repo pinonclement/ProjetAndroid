@@ -1,14 +1,12 @@
 package com.project.projetandroid;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,6 +32,10 @@ public class JeuActivity extends Activity implements OnClickListener  {
 		showDialog(DIALOG_ALERT);
 		Button b=(Button) findViewById(R.id.button1);
 		b.setOnClickListener(this);
+		Button b2=(Button)findViewById(R.id.button3);
+		b2.setOnClickListener(this);
+		Button b3=(Button)findViewById(R.id.button2);
+		b3.setOnClickListener(this);
 	}
 
 	public ArrayList<Joueur> DefinirJoueur(String a, String b, String c, String d, ArrayList <Joueur> al) {
@@ -55,22 +57,33 @@ public class JeuActivity extends Activity implements OnClickListener  {
 
 
     public void onClick(View view) {
+    	TextView desun=(TextView)findViewById(R.id.textView1);
+		TextView desdeux=(TextView)findViewById(R.id.textView2);
+		TextView detroit=(TextView)findViewById(R.id.textView3);
+		ReserveDes res=jeu.getReserve();
     	switch(view.getId()){
     		case DIALOG_ALERT :
     			showDialog(DIALOG_ALERT);
     			break;
     		case R.id.button1 :
-    			ReserveDes res=jeu.getReserve();
     			res.pioche(jeu.getJoue());
     			Des[]tmp=(jeu.getJoue()).getMain();
-    			TextView desun=(TextView)findViewById(R.id.textView1);
-    			TextView desdeux=(TextView)findViewById(R.id.textView2);
-    			TextView detroit=(TextView)findViewById(R.id.textView3);
     			desun.setText(""+tmp[0].getCouleur()+" "+tmp[0].getFaceRetournee());
     			desdeux.setText(""+tmp[1].getCouleur()+" "+tmp[1].getFaceRetournee());
     			detroit.setText(""+tmp[2].getCouleur()+" "+tmp[2].getFaceRetournee());
     			break;
-        
+    		case R.id.button3 :
+    			if(jeu.getJoue().aCasserole())
+    				jeu.getJoue().analyseTempo();
+    				res.relance(jeu.getJoue());
+    				Des[]tmp1=(jeu.getJoue()).getMain();
+    				desun.setText(""+tmp1[0].getCouleur()+" "+tmp1[0].getFaceRetournee());
+    				desdeux.setText(""+tmp1[1].getCouleur()+" "+tmp1[1].getFaceRetournee());
+    				detroit.setText(""+tmp1[2].getCouleur()+" "+tmp1[2].getFaceRetournee());
+    			break;
+    		case R.id.button2 :
+    			
+    			break;
     	}
     }
 

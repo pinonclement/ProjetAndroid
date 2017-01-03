@@ -2,6 +2,8 @@ package com.project.projetandroid;
 import java.util.ArrayList;
 
 
+
+
 class ReserveDes {
 	private ArrayList<Des> reserve=new ArrayList<Des>();
 	
@@ -20,11 +22,12 @@ class ReserveDes {
 	
 	
 	protected void pioche(Joueur a){
+		if(!a.isJouer()){
 		int max=13;
 		int i=0; int choix;
 		Des[] main=new Des[3];
 		while(i<=2){
-			choix=(int)(Math.random()*(max));
+			choix=(int)(Math.random()*(max-1));
 			if(reserve.get(choix)!=null){
 				(reserve.get(choix)).faceTire();
 				main[i]=reserve.get(choix);
@@ -36,34 +39,31 @@ class ReserveDes {
 		}
 		
 		a.setMain(main);
+		a.setJouer(true);
+	}
+		else{
+			a.setMain(a.getMain());
+		}
+	
 	}
 	
-	protected int nbrTirage(Des[] main){
-		int cpt=0; 
-		for(int i=0;i<main.length;i++)
-			if(main[i]==null)
-				cpt++;
-		return cpt;
-	}
-	
-	protected int positionNull(Des[] main){
-		int pos=0;
-		for(int i=0; i<main.length;i++)
-			if(main[i]==null)
-				return pos;
-		return pos;
-	}
 	
 	protected void relance(Joueur a){
 		Des[] main=a.getMain();
-		int tirage=nbrTirage(main);int choix;
-		while(tirage>=0){
-			choix=((int) Math.random()*reserve.size());
-			(reserve.get(choix)).faceTire();
-			main[positionNull(main)]=reserve.get(choix);
-			reserve.remove(reserve.get(choix));
-			tirage--;
+		int choix;
+		for(int i=0;i<3;i++){
+			if(main[i]==null){
+				choix=(int) (Math.random()*(reserve.size()));
+				if(reserve.get(choix)!=null){
+					(reserve.get(choix)).faceTire();
+					main[i]=reserve.get(choix);
+					reserve.remove(choix);
+					System.out.println("lol");}
+			}
+			else if(main[i].getFaceRetournee().equals("Casserole"))
+				main[i].faceTire();
 		}
 		
 	}
 }
+
