@@ -36,6 +36,10 @@ public class JeuActivity extends Activity implements OnClickListener  {
 		b2.setOnClickListener(this);
 		Button b3=(Button)findViewById(R.id.button2);
 		b3.setOnClickListener(this);
+		TextView joujou=(TextView)findViewById(R.id.joueur);
+		joujou.setText(jeu.getJoue().getPseudo());
+		TextView scoring=(TextView)findViewById(R.id.score);
+		scoring.setText(""+jeu.getJoue().getScore_final());
 	}
 
 	public ArrayList<Joueur> DefinirJoueur(String a, String b, String c, String d, ArrayList <Joueur> al) {
@@ -60,6 +64,8 @@ public class JeuActivity extends Activity implements OnClickListener  {
     	TextView desun=(TextView)findViewById(R.id.textView1);
 		TextView desdeux=(TextView)findViewById(R.id.textView2);
 		TextView detroit=(TextView)findViewById(R.id.textView3);
+		TextView joujou=(TextView)findViewById(R.id.joueur);
+
 		ReserveDes res=jeu.getReserve();
     	switch(view.getId()){
     		case DIALOG_ALERT :
@@ -82,6 +88,20 @@ public class JeuActivity extends Activity implements OnClickListener  {
     				detroit.setText(""+tmp1[2].getCouleur()+" "+tmp1[2].getFaceRetournee());
     			break;
     		case R.id.button2 :
+    			if(jeu.getJoue().getFourchette()>=3)
+    				jeu.getJoue().perdre();
+    			jeu.getJoue().gain();
+    			if(jeu.getJoue().gagne())
+    				finish();
+    			else{
+    				jeu.getJoue().setJouer(true);
+    				desun.setText("vide");
+    				desdeux.setText("vide");
+    				detroit.setText("vide");
+    				jeu.passeTour();
+    				jeu.reinitialise();
+    				joujou.setText(jeu.getJoue().getPseudo());
+    			}
     			
     			break;
     	}
@@ -93,7 +113,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
             case DIALOG_ALERT:
                 // Create out AlterDialog
                 Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(((Joueur) al.get(0)).getPseudo()+" à ton tour !");
+                builder.setMessage((jeu.getJoue().getPseudo())+"  ton tour !");
                 builder.setCancelable(true);
                 builder.setPositiveButton("Ok", new OkOnClickListener());
                // builder.setNegativeButton("OK", new CancelOnClickListener());

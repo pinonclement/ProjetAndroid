@@ -33,8 +33,7 @@ class ReserveDes {
 				main[i]=reserve.get(choix);
 				reserve.remove(choix);
 				i++;
-			}else
-				choix=((int) Math.random()*(max));	
+			}
 			max=reserve.size();
 		}
 		
