@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="false"
-    android:longClickable="false" >
+    android:longClickable="false" 
+    android:background="@drawable/fd">
 
     <TextView
         android:id="@+id/textView2"
@@ -12,7 +13,8 @@
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView3"
@@ -21,7 +23,8 @@
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_toRightOf="@+id/button3"
-        android:text="TextView" />
+        android:text="Textview"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button3"
@@ -50,7 +53,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="52dp"
         android:layout_toLeftOf="@+id/button1"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView5"
@@ -58,6 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/textView4"
         android:layout_below="@+id/textView4"
+        android:textColor="#FFFFFF"
         android:text="Dégâts subis :" />
 
     <Button
@@ -68,6 +73,7 @@
         android:layout_below="@+id/button3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
+        
         android:text="Finir son tour" />
 
     <TextView
@@ -76,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
         android:layout_below="@+id/button2"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="24dp"
         android:text="Joueur :" />
 
@@ -85,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView6"
         android:layout_toLeftOf="@+id/button2"
+        android:textColor="#FFFFFF"
         android:text="TextView" />
 
     <TextView
@@ -93,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:textColor="#FFFFFF"
         android:text="Score Joueur :" />
 
     <TextView
@@ -102,6 +111,7 @@
         android:layout_alignBaseline="@+id/textView4"
         android:layout_alignBottom="@+id/textView4"
         android:layout_toRightOf="@+id/textView4"
+        android:textColor="#FFFFFF"
         android:text="TextView" />
 
     <TextView
@@ -111,6 +121,7 @@
         android:layout_alignBaseline="@+id/textView5"
         android:layout_alignBottom="@+id/textView5"
         android:layout_alignLeft="@+id/score"
+        android:textColor="#FFFFFF"
         android:text="TextView" />
 
     <TextView
@@ -119,6 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
         android:layout_below="@+id/textView5"
+        android:textColor="#FFFFFF"
         android:text="Score Temporaire :" />
 
     <TextView
@@ -128,6 +140,7 @@
         android:layout_alignBaseline="@+id/textView8"
         android:layout_alignBottom="@+id/textView8"
         android:layout_toRightOf="@+id/textView8"
+        android:textColor="#FFFFFF"
         android:text="TextView" />
 
 </RelativeLayout>

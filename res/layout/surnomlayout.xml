@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Surnom" >
+    tools:context=".Surnom" 
+    android:background="@drawable/fd">
 
     <TextView
         android:id="@+id/user1"
