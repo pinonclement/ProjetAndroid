@@ -42,7 +42,7 @@ package com.project.projetandroid;
 
 	@Override
 	protected void faceTire() {
-		int faceChoisie=((int)Math.random()*faces.length);
+		int faceChoisie=(int)(Math.random()*faces.length);
 		this.faceRetournee=faces[faceChoisie];	
 	}
 }

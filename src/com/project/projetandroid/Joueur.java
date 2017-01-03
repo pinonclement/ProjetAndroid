@@ -97,6 +97,10 @@ public class Joueur {
 			score_tempo=0;
 	}
 	
+	protected void gain(){
+		score_final=+score_tempo;
+	}
+	
 
 
 

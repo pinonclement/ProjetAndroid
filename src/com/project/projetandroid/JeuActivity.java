@@ -8,61 +8,45 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class JeuActivity extends Activity {
+public class JeuActivity extends Activity implements OnClickListener  {
 	
-	//private String user1 = getIntent().getStringExtra("user1");
-	//String user2 = getIntent().getStringExtra("user2");
-	//String user3 = getIntent().getStringExtra("user3");
-	//String user4 = getIntent().getStringExtra("user4");
 	ArrayList<Joueur> al = new ArrayList<Joueur>();
+	SystemeJeu jeu;
     private static final int DIALOG_ALERT = 10;
 
 	public void onCreate(Bundle bn) {
 
 		setContentView(R.layout.jeulayout);
 		super.onCreate(bn);
-		
 		String user1 = getIntent().getStringExtra("user1");
 		String user2 = getIntent().getStringExtra("user2");
 		String user3 = getIntent().getStringExtra("user3");
 		String user4 = getIntent().getStringExtra("user4");
-		
 		al=DefinirJoueur(user1,user2,user3,user4,al);
+		jeu=new SystemeJeu(al);
 		showDialog(DIALOG_ALERT);
+		Button b=(Button) findViewById(R.id.button1);
+		b.setOnClickListener(this);
 	}
 
 	public ArrayList<Joueur> DefinirJoueur(String a, String b, String c, String d, ArrayList <Joueur> al) {
-
-		if (c.length()==0 && d.length()==0) {
-			Joueur joueur1 = new Joueur(a);
-			Joueur joueur2 = new Joueur(b);
-			al.add(joueur1);
-			al.add(joueur2);
-		}
-		else{
+		al.add(new Joueur (a));
+        al.add(new Joueur(b));
 			if (d.length()==0 ){
-				Joueur joueur1 = new Joueur(a);
-				Joueur joueur2 = new Joueur(b);
-				Joueur joueur3 = new Joueur(c);
-				al.add(joueur1);
-				al.add(joueur2);
-				al.add(joueur3);
+				al.add(new Joueur(c));
 			}
             else{
-                Joueur joueur1 = new Joueur(a);
-                Joueur joueur2 = new Joueur(b);
-                Joueur joueur3 = new Joueur(c);
-                Joueur joueur4 = new Joueur(d);
-                al.add(joueur1);
-                al.add(joueur2);
-                al.add(joueur3);
-                al.add(joueur4);
+
+                al.add(new Joueur(d));
 
             }
-		}
 			
 		return al;
 	}
@@ -75,7 +59,23 @@ public class JeuActivity extends Activity {
 
 
     public void onClick(View view) {
-        showDialog(DIALOG_ALERT);
+    	switch(view.getId()){
+    		case DIALOG_ALERT :
+    			showDialog(DIALOG_ALERT);
+    			break;
+    		case R.id.button1 :
+    			ReserveDes res=jeu.getReserve();
+    			res.pioche(jeu.getJoue());
+    			Des[]tmp=(jeu.getJoue()).getMain();
+    			TextView desun=(TextView)findViewById(R.id.textView1);
+    			TextView desdeux=(TextView)findViewById(R.id.textView2);
+    			TextView detroit=(TextView)findViewById(R.id.textView3);
+    			desun.setText(""+tmp[0].getCouleur()+" "+tmp[0].getFaceRetournee());
+    			desdeux.setText(""+tmp[1].getCouleur()+" "+tmp[1].getFaceRetournee());
+    			detroit.setText(""+tmp[2].getCouleur()+" "+tmp[2].getFaceRetournee());
+    			break;
+        
+    	}
     }
 
     @Override
@@ -109,4 +109,6 @@ public class JeuActivity extends Activity {
                      Toast.LENGTH_LONG).show();
     }
     }
+    
+    
 }

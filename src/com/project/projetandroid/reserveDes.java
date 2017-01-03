@@ -24,7 +24,7 @@ class ReserveDes {
 		int i=0; int choix;
 		Des[] main=new Des[3];
 		while(i<=2){
-			choix=((int) Math.random()*(max));
+			choix=(int)(Math.random()*(max));
 			if(reserve.get(choix)!=null){
 				(reserve.get(choix)).faceTire();
 				main[i]=reserve.get(choix);
@@ -32,7 +32,9 @@ class ReserveDes {
 				i++;
 			}else
 				choix=((int) Math.random()*(max));	
+			max=reserve.size();
 		}
+		
 		a.setMain(main);
 	}
 	
