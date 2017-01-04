@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/JoueurGagnant"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Gagnant : "
+        android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/gagnant"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_alignBaseline="@+id/JoueurGagnant"
+      android:layout_alignBottom="@+id/JoueurGagnant"
+      android:layout_toRightOf="@+id/JoueurGagnant"
+      android:text=" Joueur "
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/points"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_alignBaseline="@+id/JoueurPoint"
+      android:layout_alignBottom="@+id/JoueurPoint"
+      android:layout_toRightOf="@+id/JoueurPoint"
+      android:text=" points "
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/JoueurTemps"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_alignLeft="@+id/JoueurPoint"
+      android:layout_below="@+id/JoueurPoint"
+      android:text="Temps de la partie : "
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/duree"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_alignBaseline="@+id/JoueurTemps"
+      android:layout_alignBottom="@+id/JoueurTemps"
+      android:layout_toRightOf="@+id/JoueurTemps"
+      android:text=" Durée "
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/JoueurDate"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_alignLeft="@+id/JoueurPoint"
+      android:layout_below="@+id/duree"
+      android:text="Date et heure de la partie :"
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/date"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_alignBaseline="@+id/JoueurDate"
+      android:layout_alignBottom="@+id/JoueurDate"
+      android:layout_toRightOf="@+id/duree"
+      android:text=" Date+heure "
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/JoueurPoint"
+      android:layout_width="wrap_content"
+      android:layout_height="20dp"
+      android:layout_alignLeft="@+id/JoueurGagnant"
+      android:layout_below="@+id/gagnant"
+      android:text="Points : "
+      android:textSize="16sp" />
+
+</RelativeLayout>

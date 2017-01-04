@@ -33,7 +33,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Nommez les joueurs"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/textuser1"

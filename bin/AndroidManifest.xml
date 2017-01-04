@@ -22,6 +22,7 @@
             </activity>
         <activity android:name="Surnom"></activity>
         <activity android:name="JeuActivity"></activity>
+        <activity android:name="HighScoreActivity"></activity>
 
     </application>
 

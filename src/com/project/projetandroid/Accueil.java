@@ -13,14 +13,15 @@ import android.widget.TextView;
 public class Accueil extends Activity implements OnClickListener {
 	
 	private Button newsgamebutton;
+	private Button highscorebutton;
 
 	public void onCreate(Bundle bn){
 		setContentView(R.layout.accueillayout);
 		super.onCreate(bn);
 	newsgamebutton = (Button) findViewById(R.id.newgamebutton);
-//	highscorebutton = (Button) findViewById(R.id.highscorebutton);
+	highscorebutton = (Button) findViewById(R.id.highscorebutton);
 	newsgamebutton.setOnClickListener(this);
-	//highscorebutton.setOnClickListener(this);
+	highscorebutton.setOnClickListener(this);
 	
 	
 	}
@@ -34,7 +35,10 @@ public class Accueil extends Activity implements OnClickListener {
 			Intent intent2 = new Intent(this, Surnom.class);
 			startActivity(intent2);
 			break;
-	
+		case R.id.highscorebutton:
+			Intent intent3 = new Intent(this, HighScoreActivity.class);
+			startActivity(intent3);
+			break;
 		
 	} 
 
