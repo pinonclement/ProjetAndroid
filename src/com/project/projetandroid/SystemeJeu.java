@@ -2,7 +2,6 @@ package com.project.projetandroid;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 
 public class SystemeJeu {
 	ArrayList<Joueur> nbrjoueur;
@@ -22,11 +21,11 @@ public class SystemeJeu {
 		tmp.add(new Rouge());
 		tmp.add(new Jaune());
 		tmp.add(new Jaune());
-		tmp.add(new Jaune());
-		tmp.add(new Jaune());
+		tmp.add(new Vert());
 		tmp.add(new Jaune());
 		tmp.add(new Jaune());
 		tmp.add(new Vert());
+		tmp.add(new Jaune());
 		tmp.add(new Vert());
 		tmp.add(new Vert());
 		reserve=new ReserveDes(tmp);
@@ -35,18 +34,12 @@ public class SystemeJeu {
 	}
 	
 	public void passeTour(){
-		if(nbrjoueur.indexOf(joue)==nbrjoueur.size()-1)
+		int cpt=nbrjoueur.indexOf(joue);
+		System.out.println(cpt);
+		if(cpt==nbrjoueur.size()-1)
 			joue=nbrjoueur.get(0);
-		else{
-		Iterator<Joueur> iter=nbrjoueur.iterator();
-		while(iter.hasNext()){
-			if(iter.next()!=joue&&iter.next()!=null){
-				joue=iter.next();
-			}
-		}
-		}
-		
-	}
+		else
+			joue=nbrjoueur.get(++cpt);}
 	
 	protected void reinitialise(){
 		reserve=init;
