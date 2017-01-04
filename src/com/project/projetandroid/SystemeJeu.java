@@ -7,12 +7,12 @@ public class SystemeJeu {
 	ArrayList<Joueur> nbrjoueur;
 	Joueur joue;
 	ReserveDes reserve;
-	Calendar debut;
+	Calendar c=Calendar.getInstance();
 	Calendar fin;
 	
 	public SystemeJeu(ArrayList<Joueur> nbrjoueur){
 		this.nbrjoueur=nbrjoueur;
-		debut=Calendar.getInstance();
+
 		ArrayList<Des> tmp=new ArrayList<Des>();
 		tmp.add(new Rouge());
 		tmp.add(new Rouge());
@@ -82,22 +82,34 @@ public class SystemeJeu {
 	protected void setReserve(ReserveDes reserve) {
 		this.reserve = reserve;
 	}
-
-	protected Calendar getDebut() {
-		return debut;
+	protected void setFin(){
+		fin=Calendar.getInstance();
 	}
-
-	protected void setDebut(Calendar debut) {
-		this.debut = debut;
+	protected int[] temps(){
+		int[] temps=new int[2];
+		int min_deb=c.get(Calendar.MINUTE);
+		int min_fin=fin.get(Calendar.MINUTE);
+		int sec_deb=c.get(Calendar.SECOND);
+		int sec_fin=fin.get(Calendar.SECOND);
+		if(sec_fin-sec_deb>=0)
+			temps[0]=sec_fin-sec_deb;
+		else{
+			temps[0]=sec_fin+60-sec_deb;
+			min_fin--;
+		}
+		if(min_fin-min_deb>=0)
+			temps[0]=min_fin-min_deb;
+		else{
+			temps[0]=min_fin+60-min_deb;
+		}
+		
+		return temps;
 	}
-
-	protected Calendar getFin() {
-		return fin;
+	
+	protected String date(){
+		return "";
 	}
-
-	protected void setFin(Calendar fin) {
-		this.fin = fin;
-	}
+	
 	
 	
 	

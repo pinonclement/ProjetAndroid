@@ -18,6 +18,8 @@ public class JeuActivity extends Activity implements OnClickListener  {
 	ArrayList<Joueur> al = new ArrayList<Joueur>();
 	SystemeJeu jeu;
     private static final int DIALOG_ALERT = 10;
+	private static final int DIALOG_DEGAT = 11;
+	private static final int DIALOG_VICT = 12;
 
 	public void onCreate(Bundle bn) {
 
@@ -100,6 +102,10 @@ public class JeuActivity extends Activity implements OnClickListener  {
     				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
     				pv.setText(""+jeu.getJoue().getFourchette());
     				des5.setText(""+jeu.getReserve().getReserve().size());}
+    			else {
+					if(jeu.getJoue().getFourchette()>=3)
+						showDialog(DIALOG_DEGAT);
+				}
     			break;
     		case R.id.button2 :
     			if(jeu.getJoue().getFourchette()>=3)
@@ -107,7 +113,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     			jeu.getJoue().gain();
     			
     			if(jeu.getJoue().gagne()){
-    				finish();
+    				jeu.setFin();
     				}
     			else{
     				desun.setText("vide");
@@ -120,6 +126,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     				joujou.setText(jeu.getJoue().getPseudo());
     				scoring.setText(""+jeu.getJoue().getScore_final());
     				des5.setText(""+jeu.getReserve().getReserve().size());
+    				showDialog(DIALOG_ALERT);
     			}
     			
     			break;
@@ -128,17 +135,25 @@ public class JeuActivity extends Activity implements OnClickListener  {
 
     @Override
     protected Dialog onCreateDialog(int id) {
+    	String message="";
         switch (id) {
             case DIALOG_ALERT:
                 // Create out AlterDialog
-                Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage((jeu.getJoue().getPseudo())+"  ton tour !");
-                builder.setCancelable(true);
-                builder.setPositiveButton("Ok", new OkOnClickListener());
-               // builder.setNegativeButton("OK", new CancelOnClickListener());
-                AlertDialog dialog = builder.create();
-                dialog.show();
+            	message=jeu.getJoue().getPseudo()+" A ton tour !";
+                break;
+            case DIALOG_DEGAT:
+            	message="Vous avez pris 3 dégats, vous ne pouvez que passer votre tour";
+            	break;
+            case DIALOG_VICT :
+            	message="Vous avez gagné";
+            	break;
         }
+        Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setCancelable(true);
+        builder.setPositiveButton("Ok", new OkOnClickListener());
+        AlertDialog dialog = builder.create();
+        dialog.show();
         return super.onCreateDialog(id);
     }
 
@@ -153,8 +168,8 @@ public class JeuActivity extends Activity implements OnClickListener  {
     private final class OkOnClickListener implements
             DialogInterface.OnClickListener {
     	 public void onClick(DialogInterface dialog, int which) {
-             Toast.makeText(getApplicationContext(), "C'est parti !!!",
-                     Toast.LENGTH_LONG).show();
+             /*Toast.makeText(getApplicationContext(), "C'est parti !!!",
+                     Toast.LENGTH_LONG).show();*/
     }
     }
     
