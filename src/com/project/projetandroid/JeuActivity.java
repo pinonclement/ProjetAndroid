@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class JeuActivity extends Activity implements OnClickListener  {
+	private DBManager db = new DBManager(this);
 	
 	ArrayList<Joueur> al = new ArrayList<Joueur>();
 	SystemeJeu jeu;
@@ -154,6 +155,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
                 builder.setNegativeButton("Recommencer", new RecommenceOnclick()); //cr�ation bouton Recommencer
                 AlertDialog dialog = builder.create();
                 dialog.show();
+                db.createPartie(jeu.getJoue().getPseudo(), jeu.getJoue().getScore_final(), date().toString() ,);
                 return super.onCreateDialog(id);
             case DIALOG_VIDE : //si appelle � ce dialogue le message vaut "Plus de d�s"
             	message="Plus de dés";

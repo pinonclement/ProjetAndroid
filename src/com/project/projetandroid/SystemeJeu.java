@@ -2,13 +2,27 @@ package com.project.projetandroid;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import android.*;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.database.sqlite.*;
 
-public class SystemeJeu {
+
+
+public class SystemeJeu extends Activity {
+	
 	ArrayList<Joueur> nbrjoueur;
 	Joueur joue;
 	ReserveDes reserve;
 	Calendar c=Calendar.getInstance();
 	Calendar fin;
+	private DBManager db = new DBManager(this);
 	/*Construeurs de jeu*/
 	public SystemeJeu(ArrayList<Joueur> nbrjoueur){
 		this.nbrjoueur=nbrjoueur;
@@ -33,11 +47,11 @@ public class SystemeJeu {
 	/*On change de joueur*/
 	public void passeTour(){
 		int cpt=nbrjoueur.indexOf(joue); 
-		if(cpt==nbrjoueur.size()-1) //si la position du joueur est à la fin, on recommence avec le premier
+		if(cpt==nbrjoueur.size()-1) //si la position du joueur est ï¿½ la fin, on recommence avec le premier
 			joue=nbrjoueur.get(0);
 		else
 			joue=nbrjoueur.get(++cpt);} //joue est le joueur suivant dans la liste
-	/*On réinitialise les valeurs de la réserve, de joue de joueur, et son nombre de degat(il pourra repiocher à un nouveau tour*/
+	/*On rï¿½initialise les valeurs de la rï¿½serve, de joue de joueur, et son nombre de degat(il pourra repiocher ï¿½ un nouveau tour*/
 	protected void reinitialise(){
 		ArrayList<Des> tmp=new ArrayList<Des>();
 		tmp.add(new Vert());
@@ -83,12 +97,12 @@ public class SystemeJeu {
 		this.reserve = reserve;
 	}
 	
-	//récupére la date/heure de la fin de la partie
+	//rï¿½cupï¿½re la date/heure de la fin de la partie
 	protected void setFin(){
 		fin=Calendar.getInstance();
 	}
 	
-	//soustraction des secondes minutes pour savoir la durée de la partie
+	//soustraction des secondes minutes pour savoir la durï¿½e de la partie
 	protected int[] temps(){
 		int[] temps=new int[2];
 		int min_deb=c.get(Calendar.MINUTE);
@@ -110,7 +124,13 @@ public class SystemeJeu {
 		
 		return temps;
 	}
-	//récupération de la date
+	
+	protected String convertTemps(int[]tmp){
+		  int tempo=tmp[1]+tmp[0];
+		  return ""+tempo;
+		 }
+
+	//rï¿½cupï¿½ration de la date
 	protected String date(){
 		return ""+c.get(Calendar.DAY_OF_MONTH)+"-"+c.get(Calendar.MONTH)+"-"+c.get(Calendar.YEAR);
 	}
