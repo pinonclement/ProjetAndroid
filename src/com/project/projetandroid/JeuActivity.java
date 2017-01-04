@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +21,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     private static final int DIALOG_ALERT = 10;
 	private static final int DIALOG_DEGAT = 11;
 	private static final int DIALOG_VICT = 12;
+	private static final int DIALOG_VIDE = 13;
 
 	public void onCreate(Bundle bn) {
 
@@ -102,10 +104,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
     				pv.setText(""+jeu.getJoue().getFourchette());
     				des5.setText(""+jeu.getReserve().getReserve().size());}
-    			else {
-					if(jeu.getJoue().getFourchette()>=3)
-						showDialog(DIALOG_DEGAT);
-				}
+    		
     			break;
     		case R.id.button2 :
     			if(jeu.getJoue().getFourchette()>=3)
@@ -113,7 +112,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     			jeu.getJoue().gain();
     			
     			if(jeu.getJoue().gagne()){
-    				jeu.setFin();
+    				showDialog(DIALOG_VICT);
     				}
     			else{
     				desun.setText("vide");
@@ -131,6 +130,10 @@ public class JeuActivity extends Activity implements OnClickListener  {
     			
     			break;
     	}
+		if(jeu.getJoue().getFourchette()>=3)
+			showDialog(DIALOG_DEGAT);
+		if(jeu.getReserve().getReserve().size()==0)
+			showDialog(DIALOG_VIDE);
     }
 
     @Override
@@ -146,6 +149,18 @@ public class JeuActivity extends Activity implements OnClickListener  {
             	break;
             case DIALOG_VICT :
             	message="Vous avez gagné";
+            	jeu.setFin();
+            	int[] temps=jeu.temps();
+            	Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(""+jeu.getJoue().getPseudo()+" a gagné !"+"\n Durée de la partie : "+temps[1]+" minutes et "+temps[0]+" secondes \n Score : "+jeu.getJoue().getScore_final());
+                builder.setCancelable(true);
+                builder.setPositiveButton("Retour Menu", new ReturnOnclick());
+                builder.setNegativeButton("Recommencer", new RecommenceOnclick());
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return super.onCreateDialog(id);
+            case DIALOG_VIDE :
+            	message="Plus de dés";
             	break;
         }
         Builder builder = new AlertDialog.Builder(this);
@@ -173,5 +188,30 @@ public class JeuActivity extends Activity implements OnClickListener  {
     }
     }
     
+    private final class ReturnOnclick implements
+    DialogInterface.OnClickListener {
+
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			stopActivity();
+		}
+    }
+    private final class RecommenceOnclick implements
+    DialogInterface.OnClickListener {
+
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			finish();
+			startActivity(getIntent());
+			
+		}
+    }
     
-}
+    private void stopActivity(){
+    	Intent i=new Intent(this,Accueil.class);
+    	startActivity(i);
+    	finish();
+    }
+    }
+    
+    

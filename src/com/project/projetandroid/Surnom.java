@@ -45,6 +45,7 @@ public class Surnom extends Activity implements OnClickListener {
 			break;
 
 		}
+		finish();
 
 	}
 }

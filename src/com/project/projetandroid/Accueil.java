@@ -37,6 +37,7 @@ public class Accueil extends Activity implements OnClickListener {
 	
 		
 	} 
+		finish();
 
 }
 }
