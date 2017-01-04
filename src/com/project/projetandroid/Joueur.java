@@ -69,7 +69,7 @@ public class Joueur {
 		{
 			if(main[i]!=null){
 				
-				if(main[i].getFaceRetournee().equals("Pate")&&this.getFourchette()!=3)
+				if(main[i].getFaceRetournee().equals("Pate"))
 				{
 					score_tempo++;
 					main[i]=null;
@@ -85,13 +85,11 @@ public class Joueur {
 	}
 	
 	protected boolean aCasserole(){
-		if(fourchette!=3){
 			for(int i=0;i<3;i++){
 				if(main[i]!=null)
 					if(main[i].getFaceRetournee().equals("Casserole"))
 						return true;
 			}
-		}
 		return false;
 	}
 	

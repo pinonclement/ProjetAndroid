@@ -76,6 +76,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     			showDialog(DIALOG_ALERT);
     			break;
     		case R.id.button1 :
+    			if(!jeu.getJoue().isJouer()){
     			res.pioche(jeu.getJoue());
     			Des[]tmp=(jeu.getJoue()).getMain();
     			desun.setText(""+tmp[0].getCouleur()+" "+tmp[0].getFaceRetournee());
@@ -85,10 +86,10 @@ public class JeuActivity extends Activity implements OnClickListener  {
     			jeu.getJoue().analyseTempo();
     			pv.setText(""+jeu.getJoue().getFourchette());
     			scoretempo.setText(""+jeu.getJoue().getScore_tempo());
-    			des5.setText(""+jeu.getReserve().getReserve().size());
+    			des5.setText(""+jeu.getReserve().getReserve().size());}
     			break;
     		case R.id.button3 :
-    			if(jeu.getJoue().aCasserole()&&jeu.getJoue().getFourchette()<3)
+    			if(jeu.getJoue().aCasserole()&&jeu.getJoue().getFourchette()<3){
     				scoring.setText(""+jeu.getJoue().getScore_final());
     				res.relance(jeu.getJoue());
     				Des[]tmp1=(jeu.getJoue()).getMain();
@@ -98,7 +99,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     				jeu.getJoue().analyseTempo();
     				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
     				pv.setText(""+jeu.getJoue().getFourchette());
-    				des5.setText(""+jeu.getReserve().getReserve().size());
+    				des5.setText(""+jeu.getReserve().getReserve().size());}
     			break;
     		case R.id.button2 :
     			if(jeu.getJoue().getFourchette()>=3)

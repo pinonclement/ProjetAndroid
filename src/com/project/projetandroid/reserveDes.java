@@ -22,7 +22,7 @@ class ReserveDes {
 	
 	
 	protected void pioche(Joueur a){
-		if(!a.isJouer()||!reserve.isEmpty()){
+		if(!a.isJouer()&&!reserve.isEmpty()){
 		int max=13;
 		int i=0; int choix;
 		Des[] main=new Des[3];
@@ -41,9 +41,6 @@ class ReserveDes {
 		a.setMain(main);
 		a.setJouer(true);
 	}
-		else{
-			a.setMain(a.getMain());
-		}
 	
 	}
 	
