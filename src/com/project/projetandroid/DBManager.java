@@ -40,13 +40,13 @@ public class DBManager {
 		return accountFound;
 	} */
 
-	public boolean createPartie(String joueur, String points, String temps, String date) {
+	public boolean createPartie(String joueur, int i, String temps, String date) {
 		try{
 			
 		open();
 		ContentValues values = new ContentValues();
 		values.put(MyDB.COLUMN_JOUEUR, joueur);
-		values.put(MyDB.COLUMN_POINTS, points);
+		values.put(MyDB.COLUMN_POINTS, i);
 		values.put(MyDB.COLUMN_TEMPS, temps);
 		values.put(MyDB.COLUMN_DATE, date);
 		if (database.insert(MyDB.ACCOUNT_TABLE, "0", values) != -1)

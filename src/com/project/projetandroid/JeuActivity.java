@@ -19,10 +19,12 @@ public class JeuActivity extends Activity implements OnClickListener  {
 	
 	ArrayList<Joueur> al = new ArrayList<Joueur>();
 	SystemeJeu jeu;
+	String date = jeu.date();
     private static final int DIALOG_ALERT = 10;
 	private static final int DIALOG_DEGAT = 11;
 	private static final int DIALOG_VICT = 12;
 	private static final int DIALOG_VIDE = 13;
+	
 
 	public void onCreate(Bundle bn) {
 
@@ -148,6 +150,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
             	message="Vous avez gagné"; 
             	jeu.setFin();
             	int[] temps=jeu.temps(); //r�cup�ration du temps de la partie
+            	String duree=jeu.convertTemps(temps);
             	Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(""+jeu.getJoue().getPseudo()+" a gagné !"+"\n Durée de la partie : "+temps[1]+" minutes et "+temps[0]+" secondes \n Score : "+jeu.getJoue().getScore_final()); //affiche le score, le joueur victorieux, le temps de la partie
                 builder.setCancelable(true);
@@ -155,7 +158,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
                 builder.setNegativeButton("Recommencer", new RecommenceOnclick()); //cr�ation bouton Recommencer
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                db.createPartie(jeu.getJoue().getPseudo(), jeu.getJoue().getScore_final(), date().toString() ,);
+                db.createPartie(jeu.getJoue().getPseudo(), jeu.getJoue().getScore_final(),duree, date);
                 return super.onCreateDialog(id);
             case DIALOG_VIDE : //si appelle � ce dialogue le message vaut "Plus de d�s"
             	message="Plus de dés";
