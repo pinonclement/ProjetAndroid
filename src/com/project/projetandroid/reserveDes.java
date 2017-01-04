@@ -49,7 +49,7 @@ class ReserveDes {
 	
 	
 	protected void relance(Joueur a){
-		if(!reserve.isEmpty()){
+		if(!reserve.isEmpty()&&a.aCasserole()){
 		Des[] main=a.getMain();
 		int choix;
 		for(int i=0;i<3;i++){
