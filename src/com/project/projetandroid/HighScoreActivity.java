@@ -36,10 +36,10 @@ public class HighScoreActivity extends Activity {
 		        //ajout des elements dans la map
 		 
 		        map = new HashMap<String, String>();
-		        map.put("gagnant", "Excel");
-		        map.put("points", "Tableur");
-		        map.put("duree", "Tableur");
-		        map.put("date", "Tableur");
+		        map.put("gagnant", "Valeur");
+		        map.put("points", "Valeur");
+		        map.put("duree", "Valeur");
+		        map.put("date", "Valeur");
 		     
 		        listItem.add(map);
 		
