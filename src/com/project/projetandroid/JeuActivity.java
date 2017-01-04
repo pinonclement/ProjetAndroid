@@ -69,6 +69,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
 		TextView scoretempo=(TextView)findViewById(R.id.tempo);
 		TextView pv=(TextView)findViewById(R.id.degat);
 		TextView scoring=(TextView)findViewById(R.id.score);
+		TextView des5=(TextView)findViewById(R.id.des5);
 		ReserveDes res=jeu.getReserve();
     	switch(view.getId()){
     		case DIALOG_ALERT :
@@ -84,9 +85,10 @@ public class JeuActivity extends Activity implements OnClickListener  {
     			jeu.getJoue().analyseTempo();
     			pv.setText(""+jeu.getJoue().getFourchette());
     			scoretempo.setText(""+jeu.getJoue().getScore_tempo());
+    			des5.setText(""+jeu.getReserve().getReserve().size());
     			break;
     		case R.id.button3 :
-    			if(jeu.getJoue().aCasserole())
+    			if(jeu.getJoue().aCasserole()&&jeu.getJoue().getFourchette()<3)
     				scoring.setText(""+jeu.getJoue().getScore_final());
     				res.relance(jeu.getJoue());
     				Des[]tmp1=(jeu.getJoue()).getMain();
@@ -96,6 +98,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     				jeu.getJoue().analyseTempo();
     				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
     				pv.setText(""+jeu.getJoue().getFourchette());
+    				des5.setText(""+jeu.getReserve().getReserve().size());
     			break;
     		case R.id.button2 :
     			if(jeu.getJoue().getFourchette()>=3)
@@ -115,6 +118,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
     				pv.setText(""+jeu.getJoue().getFourchette());
     				joujou.setText(jeu.getJoue().getPseudo());
     				scoring.setText(""+jeu.getJoue().getScore_final());
+    				des5.setText(""+jeu.getReserve().getReserve().size());
     			}
     			
     			break;

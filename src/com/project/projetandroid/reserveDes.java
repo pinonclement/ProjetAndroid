@@ -58,8 +58,7 @@ class ReserveDes {
 				if(reserve.get(choix)!=null){
 					(reserve.get(choix)).faceTire();
 					main[i]=reserve.get(choix);
-					reserve.remove(choix);
-					System.out.println("lol");}
+					reserve.remove(choix);}
 			}
 			else if(main[i].getFaceRetournee().equals("Casserole"))
 				main[i].faceTire();

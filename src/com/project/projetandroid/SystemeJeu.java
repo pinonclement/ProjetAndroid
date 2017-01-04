@@ -33,7 +33,6 @@ public class SystemeJeu {
 	
 	public void passeTour(){
 		int cpt=nbrjoueur.indexOf(joue);
-		System.out.println(cpt);
 		if(cpt==nbrjoueur.size()-1)
 			joue=nbrjoueur.get(0);
 		else
