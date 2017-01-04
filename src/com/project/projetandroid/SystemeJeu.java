@@ -91,6 +91,7 @@ public class SystemeJeu {
 		int min_fin=fin.get(Calendar.MINUTE);
 		int sec_deb=c.get(Calendar.SECOND);
 		int sec_fin=fin.get(Calendar.SECOND);
+		System.out.println(sec_deb+" "+sec_fin);
 		if(sec_fin-sec_deb>=0)
 			temps[0]=sec_fin-sec_deb;
 		else{
@@ -98,9 +99,9 @@ public class SystemeJeu {
 			min_fin--;
 		}
 		if(min_fin-min_deb>=0)
-			temps[0]=min_fin-min_deb;
+			temps[1]=min_fin-min_deb;
 		else{
-			temps[0]=min_fin+60-min_deb;
+			temps[1]=min_fin+60-min_deb;
 		}
 		
 		return temps;
