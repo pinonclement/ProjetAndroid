@@ -12,15 +12,16 @@ import android.widget.TextView;
 
 public class Accueil extends Activity implements OnClickListener {
 	
-	private Button newsgamebutton;
+	private Button newsgamebutton; // Bouton nouvelle partie
+	private Button highscorebutton; // Bouton high score
 
 	public void onCreate(Bundle bn){
 		setContentView(R.layout.accueillayout);
 		super.onCreate(bn);
 	newsgamebutton = (Button) findViewById(R.id.newgamebutton);
-//	highscorebutton = (Button) findViewById(R.id.highscorebutton);
+	highscorebutton = (Button) findViewById(R.id.highscorebutton);
 	newsgamebutton.setOnClickListener(this);
-	//highscorebutton.setOnClickListener(this);
+	highscorebutton.setOnClickListener(this);
 	
 	
 	}
@@ -29,13 +30,16 @@ public class Accueil extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		
 		switch (v.getId()) {
-		// Si l'event clic provient du bon bouton
+		// gestion bouton nouvelle partie
 		case R.id.newgamebutton:
 			Intent intent2 = new Intent(this, Surnom.class);
 			startActivity(intent2);
-			break;
-	
-		
+			break;		
+			// gestion bouton high score
+		case R.id.highscorebutton:
+			Intent intent = new Intent(this, HighScoreActivity.class);
+			startActivity(intent);
+			break;	
 	} 
 		finish();
 

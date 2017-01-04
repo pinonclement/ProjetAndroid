@@ -30,7 +30,7 @@ public class HighScoreActivity extends Activity {
 		        //Création de la ArrayList qui nous permettra de remplire la listView
 		        ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
 		 
-		        //On déclare la HashMap qui contiendra les informations pour un item
+		        //On déclare la HashMap qui contiendra les informations pour une partie
 		        HashMap<String, String> map;
 		 
 		        //Création d'une HashMap pour insérer les informations du premier item de notre listView

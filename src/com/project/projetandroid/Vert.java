@@ -38,8 +38,8 @@ package com.project.projetandroid;
 	protected void setFaceRetournee(String faceRetournee) {
 		this.faceRetournee = faceRetournee;
 	}
-
-
+	
+	//choix aléatoire de la face simulant un lancé de dé
 	@Override
 	protected void faceTire() {
 		int faceChoisie=(int)(Math.random()*faces.length);

@@ -44,7 +44,6 @@ public class JeuActivity extends Activity implements OnClickListener  {
 		joujou.setText(jeu.getJoue().getPseudo());
 		TextView scoring=(TextView)findViewById(R.id.score);
 		scoring.setText(""+jeu.getJoue().getScore_final());
-		
 	}
 
 	public ArrayList<Joueur> DefinirJoueur(String a, String b, String c, String d, ArrayList <Joueur> al) {
@@ -55,18 +54,19 @@ public class JeuActivity extends Activity implements OnClickListener  {
             if(d.length()!=0)
                 al.add(new Joueur(d));
 			
-		return al;
+		return al; // Renvoi liste  des joueurs saisies
 	}
 
 
 
 
-    /** Called when the activity is first created. */
+    
 
-
+/*Gestion des ï¿½vï¿½nements chaque id de bouton rï¿½cupï¿½rer par le view.getId()
+ * chaque id aura une action particuliï¿½re  */
 
     public void onClick(View view) {
-    	TextView desun=(TextView)findViewById(R.id.textView1);
+    	TextView desun=(TextView)findViewById(R.id.textView1); //rï¿½cupï¿½ration de tout les textview
 		TextView desdeux=(TextView)findViewById(R.id.textView2);
 		TextView detroit=(TextView)findViewById(R.id.textView3);
 		TextView joujou=(TextView)findViewById(R.id.joueur);
@@ -74,65 +74,61 @@ public class JeuActivity extends Activity implements OnClickListener  {
 		TextView pv=(TextView)findViewById(R.id.degat);
 		TextView scoring=(TextView)findViewById(R.id.score);
 		TextView des5=(TextView)findViewById(R.id.des5);
-		ReserveDes res=jeu.getReserve();
+		ReserveDes res=jeu.getReserve(); //rï¿½cupï¿½ration de la rï¿½serve de dï¿½s dans systemJeu via un get
     	switch(view.getId()){
-    		case DIALOG_ALERT :
-    			showDialog(DIALOG_ALERT);
-    			break;
-    		case R.id.button1 :
-    			if(!jeu.getJoue().isJouer()){
-    			res.pioche(jeu.getJoue());
-    			Des[]tmp=(jeu.getJoue()).getMain();
-    			desun.setText(""+tmp[0].getCouleur()+" "+tmp[0].getFaceRetournee());
-    			desdeux.setText(""+tmp[1].getCouleur()+" "+tmp[1].getFaceRetournee());
-    			detroit.setText(""+tmp[2].getCouleur()+" "+tmp[2].getFaceRetournee());
-    			scoring.setText(""+jeu.getJoue().getScore_final());
-    			jeu.getJoue().analyseTempo();
-    			pv.setText(""+jeu.getJoue().getFourchette());
-    			scoretempo.setText(""+jeu.getJoue().getScore_tempo());
-    			des5.setText(""+jeu.getReserve().getReserve().size());}
-    			break;
-    		case R.id.button3 :
-    			if(jeu.getJoue().aCasserole()&&jeu.getJoue().getFourchette()<3){
-    				scoring.setText(""+jeu.getJoue().getScore_final());
-    				res.relance(jeu.getJoue());
-    				Des[]tmp1=(jeu.getJoue()).getMain();
-    				desun.setText(""+tmp1[0].getCouleur()+" "+tmp1[0].getFaceRetournee());
+    		case R.id.button1 : //si bouton cliquï¿½ (ici bouton lancer)
+    			if(!jeu.getJoue().isJouer()){  //si le joueur n'a pas encore jouï¿½
+    			res.pioche(jeu.getJoue()); //on appelle la mï¿½thode qui pioche dans la rï¿½serve
+    			Des[]tmp=(jeu.getJoue()).getMain(); //rï¿½cupï¿½ration de la main du joueur
+    			desun.setText(""+tmp[0].getCouleur()+" "+tmp[0].getFaceRetournee()); //affectation variable au champ correspond et en rï¿½cupï¿½rant la couleur du dï¿½s et sa face via des getters
+    			desdeux.setText(""+tmp[1].getCouleur()+" "+tmp[1].getFaceRetournee());// "" ""
+    			detroit.setText(""+tmp[2].getCouleur()+" "+tmp[2].getFaceRetournee()); // "" ""
+    			scoring.setText(""+jeu.getJoue().getScore_final()); // "" ""
+    			jeu.getJoue().analyseTempo(); // analyse de la main du joueur (voir mï¿½thode dans joueur.java)
+    			pv.setText(""+jeu.getJoue().getFourchette()); //affectation variable au champ correspondant en rï¿½upï¿½rant la valeur du joueur via des getters
+    			scoretempo.setText(""+jeu.getJoue().getScore_tempo());// "" "" 
+    			des5.setText(""+jeu.getReserve().getReserve().size());}// "" ""
+    			break; //on arrï¿½te la boucle
+    		case R.id.button3 : //si bouton relance cliquï¿½
+    			if(jeu.getJoue().aCasserole()&&jeu.getJoue().getFourchette()<3){ //on vï¿½rifie si le joueur n'a pas 3 fourchettes et s'il possï¿½de des dï¿½s face casserole
+    				res.relance(jeu.getJoue());// on appelle la mï¿½thode relance de rï¿½serveDes avec comme paramï¿½tre le joueur qui joue
+    				Des[]tmp1=(jeu.getJoue()).getMain(); //rï¿½cupï¿½ration de la nouvelle main
+    				desun.setText(""+tmp1[0].getCouleur()+" "+tmp1[0].getFaceRetournee()); //affectation variable / affichage rï¿½sultat
     				desdeux.setText(""+tmp1[1].getCouleur()+" "+tmp1[1].getFaceRetournee());
     				detroit.setText(""+tmp1[2].getCouleur()+" "+tmp1[2].getFaceRetournee());
-    				jeu.getJoue().analyseTempo();
-    				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
-    				pv.setText(""+jeu.getJoue().getFourchette());
-    				des5.setText(""+jeu.getReserve().getReserve().size());}
+    				jeu.getJoue().analyseTempo(); // mise ï¿½ jour de l'analyse de la main
+    				scoretempo.setText(""+jeu.getJoue().getScore_tempo()); //on regarde la valeur de la main
+    				pv.setText(""+jeu.getJoue().getFourchette()); //affiche rï¿½sultat
+    				des5.setText(""+jeu.getReserve().getReserve().size());} // ""
     		
     			break;
-    		case R.id.button2 :
-    			if(jeu.getJoue().getFourchette()>=3)
-    				jeu.getJoue().perdre();
-    			jeu.getJoue().gain();
+    		case R.id.button2 : //si bouton fin de tour
+    			if(jeu.getJoue().getFourchette()>=3) //si le joueur a subit au moins 3 degats
+    				jeu.getJoue().perdre(); //le score tempo est ï¿½gale ï¿½ 0
+    			jeu.getJoue().gain(); //on rajoute au score total, le score tempo
     			
-    			if(jeu.getJoue().gagne()){
-    				showDialog(DIALOG_VICT);
+    			if(jeu.getJoue().gagne()){ //si le joueur gagne (13 points au plus)
+    				showDialog(DIALOG_VICT); //appelle de la fenetre de dialogue victoire
     				}
     			else{
-    				desun.setText("vide");
+    				desun.setText("vide"); //rï¿½initialisation de tout les paramï¿½tres
     				desdeux.setText("vide");
     				detroit.setText("vide");
-    				jeu.reinitialise();
-    				jeu.passeTour();
-    				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
+    				jeu.reinitialise(); 
+    				jeu.passeTour(); // changement joueur
+    				scoretempo.setText(""+jeu.getJoue().getScore_tempo()); //on affiche les valeurs du joueurs
     				pv.setText(""+jeu.getJoue().getFourchette());
     				joujou.setText(jeu.getJoue().getPseudo());
     				scoring.setText(""+jeu.getJoue().getScore_final());
     				des5.setText(""+jeu.getReserve().getReserve().size());
-    				showDialog(DIALOG_ALERT);
+    				showDialog(DIALOG_ALERT); //affiche dialogue pour avertir le joueur
     			}
     			
     			break;
     	}
-		if(jeu.getJoue().getFourchette()>=3)
+		if(jeu.getJoue().getFourchette()>=3) //si le joueur a plus de 3 points degats, appelle une fenetre qui l'informe
 			showDialog(DIALOG_DEGAT);
-		if(jeu.getReserve().getReserve().size()==0)
+		if(jeu.getReserve().getReserve().size()==0) // informe le joueur, que la rï¿½serve est vide
 			showDialog(DIALOG_VIDE);
     }
 
@@ -140,33 +136,33 @@ public class JeuActivity extends Activity implements OnClickListener  {
     protected Dialog onCreateDialog(int id) {
     	String message="";
         switch (id) {
-            case DIALOG_ALERT:
+            case DIALOG_ALERT:  //affection message
                 // Create out AlterDialog
             	message=jeu.getJoue().getPseudo()+" A ton tour !";
                 break;
-            case DIALOG_DEGAT:
-            	message="Vous avez pris 3 dégats, vous ne pouvez que passer votre tour";
+            case DIALOG_DEGAT: //affection message
+            	message="Vous avez pris 3 dÃ©gats, vous ne pouvez que passer votre tour";
             	break;
-            case DIALOG_VICT :
-            	message="Vous avez gagné";
+            case DIALOG_VICT : //si on appelle la fenetre de victoire
+            	message="Vous avez gagnÃ©"; 
             	jeu.setFin();
-            	int[] temps=jeu.temps();
+            	int[] temps=jeu.temps(); //rï¿½cupï¿½ration du temps de la partie
             	Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(""+jeu.getJoue().getPseudo()+" a gagné !"+"\n Durée de la partie : "+temps[1]+" minutes et "+temps[0]+" secondes \n Score : "+jeu.getJoue().getScore_final());
+                builder.setMessage(""+jeu.getJoue().getPseudo()+" a gagnÃ© !"+"\n DurÃ©e de la partie : "+temps[1]+" minutes et "+temps[0]+" secondes \n Score : "+jeu.getJoue().getScore_final()); //affiche le score, le joueur victorieux, le temps de la partie
                 builder.setCancelable(true);
-                builder.setPositiveButton("Retour Menu", new ReturnOnclick());
-                builder.setNegativeButton("Recommencer", new RecommenceOnclick());
+                builder.setPositiveButton("Retour Menu", new ReturnOnclick()); //crï¿½ation bouton retour Menu
+                builder.setNegativeButton("Recommencer", new RecommenceOnclick()); //crï¿½ation bouton Recommencer
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 return super.onCreateDialog(id);
-            case DIALOG_VIDE :
-            	message="Plus de dés";
+            case DIALOG_VIDE : //si appelle ï¿½ ce dialogue le message vaut "Plus de dï¿½s"
+            	message="Plus de dÃ©s";
             	break;
         }
-        Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(message);
+        Builder builder = new AlertDialog.Builder(this); //crï¿½ation de la fenetre de dialogue
+        builder.setMessage(message);//message qui dï¿½pends de l'alerte
         builder.setCancelable(true);
-        builder.setPositiveButton("Ok", new OkOnClickListener());
+        builder.setPositiveButton("Ok", new OkOnClickListener()); //crï¿½ation bouton pour fermer la fenetre
         AlertDialog dialog = builder.create();
         dialog.show();
         return super.onCreateDialog(id);
@@ -188,29 +184,29 @@ public class JeuActivity extends Activity implements OnClickListener  {
     }
     }
     
-    private final class ReturnOnclick implements
+    private final class ReturnOnclick implements //fonction qui gï¿½re l'ï¿½vï¿½nement du clique bouton "Retourne Menu" dans le dialogue de victoire
     DialogInterface.OnClickListener {
 
 		@Override
-		public void onClick(DialogInterface dialog, int which) {
-			stopActivity();
+		public void onClick(DialogInterface dialog, int which) { 
+			stopActivity(); 
 		}
     }
-    private final class RecommenceOnclick implements
+    private final class RecommenceOnclick implements //fonction qui gï¿½re l'ï¿½vï¿½nement du clique bouton "Recommence" dans le dialogue de victoire
     DialogInterface.OnClickListener {
 
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
 			finish();
-			startActivity(getIntent());
+			startActivity(getIntent()); //redï¿½marre l'activity avec les paramï¿½tres du dï¿½but
 			
 		}
     }
     
     private void stopActivity(){
-    	Intent i=new Intent(this,Accueil.class);
-    	startActivity(i);
-    	finish();
+    	Intent i=new Intent(this,Accueil.class); //crï¿½e l'intent nï¿½cessaire, pour dï¿½marrer l'activity accueil
+    	startActivity(i); //dï¿½marre l'accueil
+    	finish(); //arrï¿½t de l'activity
     }
     }
     

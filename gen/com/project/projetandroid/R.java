@@ -19,20 +19,21 @@ public final class R {
         public static final int JoueurGagnant=0x7f060003;
         public static final int JoueurPoint=0x7f060006;
         public static final int JoueurTemps=0x7f060007;
-        public static final int Nommerjoueur=0x7f06001b;
-        public static final int RelativeLayout1=0x7f060019;
+        public static final int Nommerjoueur=0x7f06001d;
+        public static final int RelativeLayout1=0x7f06001b;
         public static final int button1=0x7f06000e;
         public static final int button2=0x7f060011;
         public static final int button3=0x7f06000d;
         public static final int date=0x7f06000a;
         public static final int degat=0x7f060015;
+        public static final int des5=0x7f060019;
         public static final int duree=0x7f060008;
         public static final int gagnant=0x7f060004;
         public static final int highscorebutton=0x7f060002;
         public static final int joueur=0x7f060013;
-        public static final int listviewperso=0x7f060018;
+        public static final int listviewperso=0x7f06001a;
         public static final int newgamebutton=0x7f060001;
-        public static final int okbutton=0x7f060021;
+        public static final int okbutton=0x7f060023;
         public static final int points=0x7f060005;
         public static final int score=0x7f060014;
         public static final int tempo=0x7f060017;
@@ -42,13 +43,14 @@ public final class R {
         public static final int textView4=0x7f060010;
         public static final int textView5=0x7f06000f;
         public static final int textView6=0x7f060012;
+        public static final int textView7=0x7f060018;
         public static final int textView8=0x7f060016;
-        public static final int textuser1=0x7f06001e;
-        public static final int textuser2=0x7f06001d;
-        public static final int textuser3=0x7f060020;
-        public static final int textuser4=0x7f06001f;
-        public static final int user1=0x7f06001a;
-        public static final int user2=0x7f06001c;
+        public static final int textuser1=0x7f060020;
+        public static final int textuser2=0x7f06001f;
+        public static final int textuser3=0x7f060022;
+        public static final int textuser4=0x7f060021;
+        public static final int user1=0x7f06001c;
+        public static final int user2=0x7f06001e;
     }
     public static final class layout {
         public static final int accueillayout=0x7f030000;

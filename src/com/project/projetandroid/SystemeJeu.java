@@ -9,7 +9,7 @@ public class SystemeJeu {
 	ReserveDes reserve;
 	Calendar c=Calendar.getInstance();
 	Calendar fin;
-	
+	/*Construeurs de jeu*/
 	public SystemeJeu(ArrayList<Joueur> nbrjoueur){
 		this.nbrjoueur=nbrjoueur;
 
@@ -30,14 +30,14 @@ public class SystemeJeu {
 		reserve=new ReserveDes(tmp);
 		joue=nbrjoueur.get(0);
 	}
-	
+	/*On change de joueur*/
 	public void passeTour(){
-		int cpt=nbrjoueur.indexOf(joue);
-		if(cpt==nbrjoueur.size()-1)
+		int cpt=nbrjoueur.indexOf(joue); 
+		if(cpt==nbrjoueur.size()-1) //si la position du joueur est à la fin, on recommence avec le premier
 			joue=nbrjoueur.get(0);
 		else
-			joue=nbrjoueur.get(++cpt);}
-	
+			joue=nbrjoueur.get(++cpt);} //joue est le joueur suivant dans la liste
+	/*On réinitialise les valeurs de la réserve, de joue de joueur, et son nombre de degat(il pourra repiocher à un nouveau tour*/
 	protected void reinitialise(){
 		ArrayList<Des> tmp=new ArrayList<Des>();
 		tmp.add(new Vert());
@@ -58,7 +58,7 @@ public class SystemeJeu {
 		joue.setScore_tempo(0);
 		joue.setJouer(false);
 	}
-
+	//getters/setters
 	protected ArrayList<Joueur> getNbrjoueur() {
 		return nbrjoueur;
 	}
@@ -82,9 +82,13 @@ public class SystemeJeu {
 	protected void setReserve(ReserveDes reserve) {
 		this.reserve = reserve;
 	}
+	
+	//récupére la date/heure de la fin de la partie
 	protected void setFin(){
 		fin=Calendar.getInstance();
 	}
+	
+	//soustraction des secondes minutes pour savoir la durée de la partie
 	protected int[] temps(){
 		int[] temps=new int[2];
 		int min_deb=c.get(Calendar.MINUTE);
@@ -106,9 +110,9 @@ public class SystemeJeu {
 		
 		return temps;
 	}
-	
+	//récupération de la date
 	protected String date(){
-		return "";
+		return ""+c.get(Calendar.DAY_OF_MONTH)+"-"+c.get(Calendar.MONTH)+"-"+c.get(Calendar.YEAR);
 	}
 	
 	
