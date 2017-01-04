@@ -22,19 +22,20 @@ class ReserveDes {
 	
 	
 	protected void pioche(Joueur a){
-		if(!a.isJouer()){
+		if(!a.isJouer()||!reserve.isEmpty()){
 		int max=13;
 		int i=0; int choix;
 		Des[] main=new Des[3];
 		while(i<=2){
-			choix=(int)(Math.random()*(max-1));
+			choix=(int)(Math.random()*(max));
 			if(reserve.get(choix)!=null){
 				(reserve.get(choix)).faceTire();
 				main[i]=reserve.get(choix);
 				reserve.remove(choix);
+				max=max-1;
 				i++;
 			}
-			max=reserve.size();
+			
 		}
 		
 		a.setMain(main);
@@ -48,6 +49,7 @@ class ReserveDes {
 	
 	
 	protected void relance(Joueur a){
+		if(!reserve.isEmpty()){
 		Des[] main=a.getMain();
 		int choix;
 		for(int i=0;i<3;i++){
@@ -63,6 +65,7 @@ class ReserveDes {
 				main[i].faceTire();
 		}
 		
+	}
 	}
 }
 

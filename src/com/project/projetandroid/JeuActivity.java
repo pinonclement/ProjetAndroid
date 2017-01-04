@@ -40,6 +40,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
 		joujou.setText(jeu.getJoue().getPseudo());
 		TextView scoring=(TextView)findViewById(R.id.score);
 		scoring.setText(""+jeu.getJoue().getScore_final());
+		
 	}
 
 	public ArrayList<Joueur> DefinirJoueur(String a, String b, String c, String d, ArrayList <Joueur> al) {
@@ -65,7 +66,9 @@ public class JeuActivity extends Activity implements OnClickListener  {
 		TextView desdeux=(TextView)findViewById(R.id.textView2);
 		TextView detroit=(TextView)findViewById(R.id.textView3);
 		TextView joujou=(TextView)findViewById(R.id.joueur);
-
+		TextView scoretempo=(TextView)findViewById(R.id.tempo);
+		TextView pv=(TextView)findViewById(R.id.degat);
+		TextView scoring=(TextView)findViewById(R.id.score);
 		ReserveDes res=jeu.getReserve();
     	switch(view.getId()){
     		case DIALOG_ALERT :
@@ -77,30 +80,41 @@ public class JeuActivity extends Activity implements OnClickListener  {
     			desun.setText(""+tmp[0].getCouleur()+" "+tmp[0].getFaceRetournee());
     			desdeux.setText(""+tmp[1].getCouleur()+" "+tmp[1].getFaceRetournee());
     			detroit.setText(""+tmp[2].getCouleur()+" "+tmp[2].getFaceRetournee());
+    			scoring.setText(""+jeu.getJoue().getScore_final());
+    			jeu.getJoue().analyseTempo();
+    			pv.setText(""+jeu.getJoue().getFourchette());
+    			scoretempo.setText(""+jeu.getJoue().getScore_tempo());
     			break;
     		case R.id.button3 :
     			if(jeu.getJoue().aCasserole())
-    				jeu.getJoue().analyseTempo();
+    				scoring.setText(""+jeu.getJoue().getScore_final());
     				res.relance(jeu.getJoue());
     				Des[]tmp1=(jeu.getJoue()).getMain();
     				desun.setText(""+tmp1[0].getCouleur()+" "+tmp1[0].getFaceRetournee());
     				desdeux.setText(""+tmp1[1].getCouleur()+" "+tmp1[1].getFaceRetournee());
     				detroit.setText(""+tmp1[2].getCouleur()+" "+tmp1[2].getFaceRetournee());
+    				jeu.getJoue().analyseTempo();
+    				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
+    				pv.setText(""+jeu.getJoue().getFourchette());
     			break;
     		case R.id.button2 :
     			if(jeu.getJoue().getFourchette()>=3)
     				jeu.getJoue().perdre();
     			jeu.getJoue().gain();
-    			if(jeu.getJoue().gagne())
+    			
+    			if(jeu.getJoue().gagne()){
     				finish();
+    				}
     			else{
-    				jeu.getJoue().setJouer(true);
     				desun.setText("vide");
     				desdeux.setText("vide");
     				detroit.setText("vide");
-    				jeu.passeTour();
     				jeu.reinitialise();
+    				jeu.passeTour();
+    				scoretempo.setText(""+jeu.getJoue().getScore_tempo());
+    				pv.setText(""+jeu.getJoue().getFourchette());
     				joujou.setText(jeu.getJoue().getPseudo());
+    				scoring.setText(""+jeu.getJoue().getScore_final());
     			}
     			
     			break;

@@ -5,7 +5,6 @@ import java.util.Calendar;
 
 public class SystemeJeu {
 	ArrayList<Joueur> nbrjoueur;
-	ReserveDes init;
 	Joueur joue;
 	ReserveDes reserve;
 	Calendar debut;
@@ -29,7 +28,6 @@ public class SystemeJeu {
 		tmp.add(new Vert());
 		tmp.add(new Vert());
 		reserve=new ReserveDes(tmp);
-		init=reserve;
 		joue=nbrjoueur.get(0);
 	}
 	
@@ -42,7 +40,24 @@ public class SystemeJeu {
 			joue=nbrjoueur.get(++cpt);}
 	
 	protected void reinitialise(){
-		reserve=init;
+		ArrayList<Des> tmp=new ArrayList<Des>();
+		tmp.add(new Vert());
+		tmp.add(new Vert());
+		tmp.add(new Rouge());
+		tmp.add(new Rouge());
+		tmp.add(new Jaune());
+		tmp.add(new Jaune());
+		tmp.add(new Vert());
+		tmp.add(new Jaune());
+		tmp.add(new Jaune());
+		tmp.add(new Vert());
+		tmp.add(new Jaune());
+		tmp.add(new Rouge());
+		tmp.add(new Rouge());
+		reserve=new ReserveDes(tmp);
+		joue.setFourchette(0);
+		joue.setScore_tempo(0);
+		joue.setJouer(false);
 	}
 
 	protected ArrayList<Joueur> getNbrjoueur() {

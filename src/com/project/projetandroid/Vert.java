@@ -1,7 +1,7 @@
 package com.project.projetandroid;
 
  class Vert extends Des {
-	private String couleur="Jaune";
+	private String couleur="Vert";
 	private String[] faces={"Pate","Pate","Pate","Casserole","Casserole","Fourchette"};
 	private String faceRetournee="";
 	
