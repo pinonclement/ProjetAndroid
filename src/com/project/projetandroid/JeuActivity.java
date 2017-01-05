@@ -19,7 +19,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
 	
 	ArrayList<Joueur> al = new ArrayList<Joueur>();
 	SystemeJeu jeu;
-	String date = jeu.date();
+	String date;
     private static final int DIALOG_ALERT = 10;
 	private static final int DIALOG_DEGAT = 11;
 	private static final int DIALOG_VICT = 12;
@@ -147,6 +147,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
             	message="Vous avez pris 3 dégats, vous ne pouvez que passer votre tour";
             	break;
             case DIALOG_VICT : //si on appelle la fenetre de victoire
+            	db.open();
             	message="Vous avez gagné"; 
             	jeu.setFin();
             	int[] temps=jeu.temps(); //r�cup�ration du temps de la partie
@@ -158,6 +159,7 @@ public class JeuActivity extends Activity implements OnClickListener  {
                 builder.setNegativeButton("Recommencer", new RecommenceOnclick()); //cr�ation bouton Recommencer
                 AlertDialog dialog = builder.create();
                 dialog.show();
+                date=jeu.date();
                 db.createPartie(jeu.getJoue().getPseudo(), jeu.getJoue().getScore_final(),duree, date);
                 return super.onCreateDialog(id);
             case DIALOG_VIDE : //si appelle � ce dialogue le message vaut "Plus de d�s"
