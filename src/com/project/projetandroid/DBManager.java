@@ -14,7 +14,7 @@ import android.database.sqlite.*;
 public class DBManager {
 	private SQLiteDatabase database;
 	private MyDB dbHelper;
-	private String [] filtre ={MyDB.COLUMN_POINTS};
+	private String filtre =MyDB.COLUMN_POINTS;
 	private String[] allColumns = { MyDB.COLUMN_ID, MyDB.COLUMN_JOUEUR, MyDB.COLUMN_POINTS, MyDB.COLUMN_TEMPS, MyDB.COLUMN_DATE};
 
 	public DBManager(Context context) {
@@ -65,16 +65,30 @@ public class DBManager {
 		database.delete(MyDB.ACCOUNT_TABLE, MyDB.COLUMN_NAME + " = " + account, null);
 	} */
 
-	public List<Partie> getAllAccounts() {
+	public List<Partie> getAllPartie() {
 		List<Partie> listpartie = new ArrayList<Partie>();
-		Cursor cursor = database.query(MyDB.ACCOUNT_TABLE, allColumns, null, null, null, null, null);
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			Partie partie = cursorToPartie(cursor);
+		Cursor cursor = database.query(MyDB.ACCOUNT_TABLE, allColumns, null, null, null, null, filtre);
+		if(cursor!=null){
+			int i=0;
+			cursor.moveToFirst();
+			while (i!=3) {
+				if(!cursor.isAfterLast()){
+					Partie partie = cursorToPartie(cursor);
+					listpartie.add(partie);
+					cursor.moveToNext();
+				}
+				else{
+					Partie partie= new Partie(0,"","","","");
+					listpartie.add(partie);
+				}
+				
+				i++;
+			}
+			cursor.close();}
+		else{
+			Partie partie= new Partie(0,"","","","");
 			listpartie.add(partie);
-			cursor.moveToNext();
 		}
-		cursor.close();
 		return listpartie;
 	}
 

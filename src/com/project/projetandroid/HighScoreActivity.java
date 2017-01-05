@@ -13,6 +13,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class HighScoreActivity extends Activity {
+	private DBManager db = new DBManager(this);
+	
+	ArrayList partie = (ArrayList) db.getAllPartie();
 
 	
 	
@@ -21,8 +24,10 @@ public class HighScoreActivity extends Activity {
 	ListView maListViewPerso;
 	
 		    public void onCreate(Bundle savedInstanceState) {
+		    	
 		        super.onCreate(savedInstanceState);
 		        setContentView(R.layout.mainhighscore);
+		        db.open();
 		 
 		        //Récupération de la listview créée dans le fichier main.xml
 		        maListViewPerso = (ListView) findViewById(R.id.listviewperso);
@@ -36,10 +41,10 @@ public class HighScoreActivity extends Activity {
 		        //ajout des elements dans la map
 		 
 		        map = new HashMap<String, String>();
-		        map.put("gagnant", "Paul");
-		        map.put("points", "13");
-		        map.put("duree", "1min30");
-		        map.put("date", "04/01/2017 9h00");
+		        map.put("gagnant", ((Partie) partie.get(0)).getJoueur());
+		        map.put("points", ((Partie) partie.get(0)).getPoints());
+		        map.put("duree", ((Partie) partie.get(0)).getTemps());
+		        map.put("date",((Partie) partie.get(0)).getDate()) ;
 		     
 		        listItem.add(map);
 		
