@@ -14,7 +14,7 @@ import android.database.sqlite.*;
 public class DBManager {
 	private SQLiteDatabase database;
 	private MyDB dbHelper;
-	private String filtre =MyDB.COLUMN_POINTS;
+	private String filtre = MyDB.COLUMN_POINTS;
 	private String[] allColumns = { MyDB.COLUMN_ID, MyDB.COLUMN_JOUEUR, MyDB.COLUMN_POINTS, MyDB.COLUMN_TEMPS, MyDB.COLUMN_DATE};
 
 	public DBManager(Context context) {
